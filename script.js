@@ -261,7 +261,7 @@ document.querySelector('.cart-icon').addEventListener('click', openCart);
 document.querySelector('.close-cart').addEventListener('click', closeCart);
 
 // Gizli bilgiler
-const WHATSAPP_NUMBER = '905436471714'; // Buraya numara gelecek
+const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER; // Buraya numara gelecek
 
 // Complete order via WhatsApp
 document.getElementById('complete-order').addEventListener('click', function() {
