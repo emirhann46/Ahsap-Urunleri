@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahşap Dünyası - El Yapımı Ahşap Ürünler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-tree"></i>
+                <span>Ahşap Dünyası</span>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <ul class="menu">
+                    <li><a href="#" class="active">Ana Sayfa</a></li>
+                    <li><a href="#products">Ürünler</a></li>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+                <div class="mobile-menu-footer">
+                    <button id="theme-toggle" class="theme-toggle-btn">
+                        <i class="fas fa-moon"></i>
+                        <span>Tema Değiştir</span>
+                    </button>
+                </div>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>El Yapımı Ahşap Mobilyalar</h1>
+            <p>Doğal ve özgün tasarımlarla evinizi güzelleştirin</p>
+            <a href="#products" class="cta-button">Ürünleri Keşfet</a>
+        </div>
+    </div>
+
+    <main>
+        <section class="filters">
+            <h2>Kategoriler</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">
+                    <span><i class="fas fa-border-all"></i> Tümü</span>
+                </button>
+                <button class="filter-btn" data-category="sandik">
+                    <span><i class="fas fa-box"></i> Sandıklar</span>
+                </button>
+                <button class="filter-btn" data-category="masa">
+                    <span><i class="fas fa-table"></i> Masalar</span>
+                </button>
+                <button class="filter-btn" data-category="sandalye">
+                    <span><i class="fas fa-chair"></i> Sandalyeler</span>
+                </button>
+                <button class="filter-btn" data-category="dekoratif">
+                    <span><i class="fas fa-star"></i> Dekoratif</span>
+                </button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Ürün ara...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <!-- Products will be added dynamically via JavaScript -->
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>Hakkımızda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>20 yılı aşkın tecrübemizle, tamamen el yapımı ahşap mobilyalar üretiyoruz. Her ürünümüz benzersiz ve özenle işlenmiş olup, doğal ahşabın sıcaklığını evinize taşıyor.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h3>El Yapımı</h3>
+                            <p>Tüm ürünlerimiz usta ellerde şekilleniyor</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tree"></i>
+                            <h3>Doğal Malzeme</h3>
+                            <p>%100 doğal ahşap kullanıyoruz</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <h3>Kalite Garantisi</h3>
+                            <p>2 yıl garanti sunuyoruz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Photo Gallery Modal -->
+    <div id="gallery-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="gallery-img">
+        <div class="modal-nav">
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Ahşap Sokak No:123, İstanbul</p>
+                <p><i class="fas fa-phone"></i> +90 (212) 345 67 89</p>
+                <p><i class="fas fa-envelope"></i> info@ahsapdunyasi.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Sosyal Medya</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="#">Gizlilik Politikası</a></li>
+                    <li><a href="#">Satış Sözleşmesi</a></li>
+                    <li><a href="#">İade Koşulları</a></li>
+                    <li><a href="#">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-section newsletter">
+                <h3>Bültenimize Katılın</h3>
+                <p>Yeni ürünler ve kampanyalardan haberdar olun</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="E-posta adresiniz">
+                    <button type="submit">Katıl</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ahşap Dünyası. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Alışveriş Sepeti</h2>
+                <button class="close-cart"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Toplam:</span>
+                    <span id="cart-total-price">0 TL</span>
+                </div>
+                <div class="cart-buttons">
+                    <button class="cart-button clear-cart" id="clear-cart">
+                        <i class="fas fa-trash"></i>
+                        <span>Sepeti Temizle</span>
+                    </button>
+                    <button class="cart-button complete-order" id="complete-order">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Siparişi Oluştur</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
