@@ -5,7 +5,7 @@ const products = [
         name: "El Yapımı Ahşap Saat",
         price: 750,
         category: "dekoratif",
-        image: "products/wooden-clock.jpg",
+        image: "https://images.unsplash.com/photo-1611486212557-88be5ff6f941?w=500",
         description: "Özel tasarım, el yapımı duvar saati"
     },
     {
@@ -13,7 +13,7 @@ const products = [
         name: "Ahşap Oymalı Tepsi",
         price: 450,
         category: "mutfak",
-        image: "products/wooden-tray.jpg",
+        image: "https://images.unsplash.com/photo-1635540705200-34c379d6dfc4?w=500",
         description: "Geleneksel motiflerle süslenmiş servis tepsisi"
     },
     {
@@ -21,7 +21,7 @@ const products = [
         name: "Ahşap Mücevher Kutusu",
         price: 600,
         category: "dekoratif",
-        image: "products/jewelry-box.jpg",
+        image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500",
         description: "El işçiliği ile yapılmış, özel tasarım mücevher kutusu"
     },
     {
@@ -29,7 +29,7 @@ const products = [
         name: "Oymalı Ahşap Ayna",
         price: 850,
         category: "dekoratif",
-        image: "products/wooden-mirror.jpg",
+        image: "https://images.unsplash.com/photo-1616486788371-62d930495c44?w=500",
         description: "Geleneksel motiflerle süslenmiş duvar aynası"
     },
     {
@@ -37,7 +37,7 @@ const products = [
         name: "Ahşap Çay Seti",
         price: 550,
         category: "mutfak",
-        image: "products/tea-set.jpg",
+        image: "https://images.unsplash.com/photo-1578898887155-72e9a7da1fb3?w=500",
         description: "6 kişilik el yapımı ahşap çay seti"
     },
     {
@@ -45,7 +45,7 @@ const products = [
         name: "Dekoratif Duvar Rafı",
         price: 400,
         category: "dekoratif",
-        image: "products/wall-shelf.jpg",
+        image: "https://images.unsplash.com/photo-1593085260707-5377ba37f868?w=500",
         description: "Oymalı ahşap duvar rafı"
     },
     {
@@ -53,7 +53,7 @@ const products = [
         name: "Ahşap Kaşıklık",
         price: 300,
         category: "mutfak",
-        image: "products/spoon-holder.jpg",
+        image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500",
         description: "Geleneksel motifli kaşıklık"
     },
     {
@@ -61,7 +61,7 @@ const products = [
         name: "El Yapımı Ahşap Lamba",
         price: 950,
         category: "dekoratif",
-        image: "products/wooden-lamp.jpg",
+        image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=500",
         description: "Özel tasarım masa lambası"
     }
 ];
@@ -204,60 +204,27 @@ document.getElementById('clear-cart').addEventListener('click', function() {
 
 // Ürünleri görüntüleme fonksiyonu
 function displayProducts(filteredProducts = products) {
-    const productsContainer = document.getElementById('products');
+    const productsContainer = document.querySelector('.products');
     productsContainer.innerHTML = '';
 
     filteredProducts.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.setAttribute('data-category', product.category);
-        
-        // Add category badge
-        const categoryNames = {
-            'sandik': 'Sandık',
-            'masa': 'Masa',
-            'sandalye': 'Sandalye',
-            'dekoratif': 'Dekoratif',
-            'mutfak': 'Mutfak'
-        };
-        
-        productCard.innerHTML = `
-            <div class="product-badge">${categoryNames[product.category]}</div>
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
+        const productElement = document.createElement('div');
+        productElement.className = 'product';
+        productElement.innerHTML = `
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?w=500'">
+            </div>
             <div class="product-info">
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>
-                <div class="price">${product.price.toLocaleString('tr-TR')} TL</div>
+                <p class="price">${product.price} TL</p>
                 <button class="add-to-cart" data-product-id="${product.id}">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Sepete Ekle</span>
                 </button>
             </div>
         `;
-
-        const img = productCard.querySelector('img');
-        img.addEventListener('click', () => {
-            const allProductImages = Array.from(document.querySelectorAll('.product-card img'));
-            openModal(img, allProductImages);
-        });
-
-        const addToCartBtn = productCard.querySelector('.add-to-cart');
-        addToCartBtn.addEventListener('click', (e) => {
-            const btn = e.currentTarget;
-            const productId = parseInt(btn.getAttribute('data-product-id'));
-            
-            btn.classList.add('success');
-            btn.innerHTML = '<i class="fas fa-check"></i><span>Sepete Eklendi</span>';
-            
-            setTimeout(() => {
-                btn.classList.remove('success');
-                btn.innerHTML = '<i class="fas fa-shopping-cart"></i><span>Sepete Ekle</span>';
-            }, 2000);
-            
-            addToCart(productId);
-        });
-
-        productsContainer.appendChild(productCard);
+        productsContainer.appendChild(productElement);
     });
 }
 
@@ -272,7 +239,7 @@ filterButtons.forEach(button => {
         button.classList.add('active');
         
         // Filter products with fade effect
-        const products = document.querySelectorAll('.product-card');
+        const products = document.querySelectorAll('.product');
         products.forEach(product => {
             product.style.opacity = '0';
             product.style.transform = 'translateY(20px)';
@@ -281,7 +248,7 @@ filterButtons.forEach(button => {
         setTimeout(() => {
             displayProducts(category);
             setTimeout(() => {
-                const newProducts = document.querySelectorAll('.product-card');
+                const newProducts = document.querySelectorAll('.product');
                 newProducts.forEach(product => {
                     product.style.opacity = '1';
                     product.style.transform = 'translateY(0)';
@@ -390,7 +357,7 @@ const searchBtn = document.getElementById('search-btn');
 
 function searchProducts() {
     const searchTerm = searchInput.value.toLowerCase();
-    const allProducts = document.querySelectorAll('.product-card');
+    const allProducts = document.querySelectorAll('.product');
     
     allProducts.forEach(product => {
         const title = product.querySelector('h3').textContent.toLowerCase();
