@@ -260,6 +260,9 @@ function closeCart() {
 document.querySelector('.cart-icon').addEventListener('click', openCart);
 document.querySelector('.close-cart').addEventListener('click', closeCart);
 
+// Gizli bilgiler
+const WHATSAPP_NUMBER = '905436471714'; // Buraya numara gelecek
+
 // Complete order via WhatsApp
 document.getElementById('complete-order').addEventListener('click', function() {
     if (cart.length === 0) {
@@ -283,8 +286,7 @@ document.getElementById('complete-order').addEventListener('click', function() {
 
     // Format message for WhatsApp URL
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = '905436471714';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');
