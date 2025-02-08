@@ -31,7 +31,7 @@
                 </div>
             </nav>
             <div class="header-actions">
-                <div class="cart-icon" onclick="openCart()">
+                <div class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count" class="cart-count">0</span>
                 </div>
@@ -39,12 +39,27 @@
         </div>
     </header>
 
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>El Yapımı Ahşap Mobilyalar</h1>
+            <p>Doğal ve özgün tasarımlarla evinizi güzelleştirin</p>
+            <a href="#products" class="cta-button">Ürünleri Keşfet</a>
+        </div>
+    </div>
+
     <main>
-        <section class="filter-section">
+        <section class="filters">
+            <h2>Kategoriler</h2>
             <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">Tümü</button>
-                <button class="filter-btn" data-category="dekoratif">Dekoratif</button>
-                <button class="filter-btn" data-category="mutfak">Mutfak</button>
+                <button class="filter-btn active" data-category="all">
+                    <span><i class="fas fa-border-all"></i> Tümü</span>
+                </button>
+                <button class="filter-btn" data-category="dekoratif">
+                    <span><i class="fas fa-star"></i> Dekoratif</span>
+                </button>
+                <button class="filter-btn" data-category="mutfak">
+                    <span><i class="fas fa-utensils"></i> Mutfak</span>
+                </button>
             </div>
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Ürün ara...">
@@ -52,7 +67,7 @@
             </div>
         </section>
 
-        <section id="products" class="products">
+        <section class="products" id="products">
             <!-- Ürünler JavaScript ile eklenecek -->
         </section>
     </main>
