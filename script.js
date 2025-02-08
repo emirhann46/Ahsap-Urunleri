@@ -1,171 +1,68 @@
-// Ürün veritabanı
+// Ürün verileri
 const products = [
-    // Sandıklar
     {
         id: 1,
-        category: 'sandik',
-        name: 'El İşlemeli Çeyiz Sandığı',
-        price: 2500,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'El işlemeli çeyiz sandığı'
+        name: "El Yapımı Ahşap Saat",
+        price: 750,
+        category: "dekoratif",
+        image: "products/wooden-clock.jpg",
+        description: "Özel tasarım, el yapımı duvar saati"
     },
     {
         id: 2,
-        category: 'sandik',
-        name: 'Vintage Ahşap Sandık',
-        price: 1800,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Vintage ahşap sandık'
+        name: "Ahşap Oymalı Tepsi",
+        price: 450,
+        category: "mutfak",
+        image: "products/wooden-tray.jpg",
+        description: "Geleneksel motiflerle süslenmiş servis tepsisi"
     },
     {
         id: 3,
-        category: 'sandik',
-        name: 'Modern Dekoratif Sandık',
-        price: 2200,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Modern dekoratif sandık'
+        name: "Ahşap Mücevher Kutusu",
+        price: 600,
+        category: "dekoratif",
+        image: "products/jewelry-box.jpg",
+        description: "El işçiliği ile yapılmış, özel tasarım mücevher kutusu"
     },
     {
         id: 4,
-        category: 'sandik',
-        name: 'Oymalı Ceviz Sandık',
-        price: 3200,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Oymalı ceviz sandık'
+        name: "Oymalı Ahşap Ayna",
+        price: 850,
+        category: "dekoratif",
+        image: "products/wooden-mirror.jpg",
+        description: "Geleneksel motiflerle süslenmiş duvar aynası"
     },
     {
         id: 5,
-        category: 'sandik',
-        name: 'Antika Görünümlü Sandık',
-        price: 2800,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Antika görünümlü sandık'
+        name: "Ahşap Çay Seti",
+        price: 550,
+        category: "mutfak",
+        image: "products/tea-set.jpg",
+        description: "6 kişilik el yapımı ahşap çay seti"
     },
-    
-    // Masalar
     {
         id: 6,
-        category: 'masa',
-        name: 'Doğal Ahşap Yemek Masası',
-        price: 4500,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Doğal ahşap yemek masası'
+        name: "Dekoratif Duvar Rafı",
+        price: 400,
+        category: "dekoratif",
+        image: "products/wall-shelf.jpg",
+        description: "Oymalı ahşap duvar rafı"
     },
     {
         id: 7,
-        category: 'masa',
-        name: 'Rustik Çalışma Masası',
-        price: 3200,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Rustik çalışma masası'
+        name: "Ahşap Kaşıklık",
+        price: 300,
+        category: "mutfak",
+        image: "products/spoon-holder.jpg",
+        description: "Geleneksel motifli kaşıklık"
     },
     {
         id: 8,
-        category: 'masa',
-        name: 'Modern Kahve Masası',
-        price: 1500,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Modern kahve masası'
-    },
-    {
-        id: 9,
-        category: 'masa',
-        name: 'Endüstriyel Yan Sehpa',
-        price: 900,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Endüstriyel yan sehpa'
-    },
-    {
-        id: 10,
-        category: 'masa',
-        name: 'Masif Orta Sehpa',
-        price: 1200,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Masif orta sehpa'
-    },
-    
-    // Sandalyeler
-    {
-        id: 11,
-        category: 'sandalye',
-        name: 'Klasik Ahşap Sandalye',
-        price: 800,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Klasik ahşap sandalye'
-    },
-    {
-        id: 12,
-        category: 'sandalye',
-        name: 'Modern Yemek Sandalyesi',
-        price: 1200,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Modern yemek sandalyesi'
-    },
-    {
-        id: 13,
-        category: 'sandalye',
-        name: 'Vintage Bar Taburesi',
-        price: 600,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Vintage bar taburesi'
-    },
-    {
-        id: 14,
-        category: 'sandalye',
-        name: 'El Oymalı Berjer',
-        price: 2500,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'El oymalı berjer'
-    },
-    {
-        id: 15,
-        category: 'sandalye',
-        name: 'Ahşap Sallanan Sandalye',
-        price: 1800,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Ahşap sallanan sandalye'
-    },
-    
-    // Dekoratif Ürünler
-    {
-        id: 16,
-        category: 'dekoratif',
-        name: 'Ahşap Duvar Saati',
-        price: 450,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Ahşap duvar saati'
-    },
-    {
-        id: 17,
-        category: 'dekoratif',
-        name: 'El Yapımı Kitaplık',
-        price: 1600,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'El yapımı kitaplık'
-    },
-    {
-        id: 18,
-        category: 'dekoratif',
-        name: 'Dekoratif Ayna Çerçevesi',
-        price: 750,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Dekoratif ayna çerçevesi'
-    },
-    {
-        id: 19,
-        category: 'dekoratif',
-        name: 'Ahşap Mumluk Set',
-        price: 300,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Ahşap mumluk set'
-    },
-    {
-        id: 20,
-        category: 'dekoratif',
-        name: 'Vintage Fotoğraf Çerçevesi',
-        price: 250,
-        image: 'https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=500',
-        description: 'Vintage fotoğraf çerçevesi'
+        name: "El Yapımı Ahşap Lamba",
+        price: 950,
+        category: "dekoratif",
+        image: "products/wooden-lamp.jpg",
+        description: "Özel tasarım masa lambası"
     }
 ];
 
@@ -305,21 +202,12 @@ document.getElementById('clear-cart').addEventListener('click', function() {
     }
 });
 
-// Ürünleri görüntüleme
-function displayProducts(category = 'all') {
-    const filteredProducts = category === 'all' 
-        ? products 
-        : products.filter(product => product.category === category);
-
-    renderProducts(filteredProducts);
-}
-
-// Update product rendering to include better UX
-function renderProducts(products) {
+// Ürünleri görüntüleme fonksiyonu
+function displayProducts(filteredProducts = products) {
     const productsContainer = document.getElementById('products');
     productsContainer.innerHTML = '';
 
-    products.forEach(product => {
+    filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         productCard.setAttribute('data-category', product.category);
@@ -329,7 +217,8 @@ function renderProducts(products) {
             'sandik': 'Sandık',
             'masa': 'Masa',
             'sandalye': 'Sandalye',
-            'dekoratif': 'Dekoratif'
+            'dekoratif': 'Dekoratif',
+            'mutfak': 'Mutfak'
         };
         
         productCard.innerHTML = `
