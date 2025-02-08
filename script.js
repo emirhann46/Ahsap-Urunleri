@@ -204,7 +204,7 @@ document.getElementById('clear-cart').addEventListener('click', function() {
 
 // Ürünleri görüntüleme fonksiyonu
 function displayProducts(filteredProducts = products) {
-    const productsContainer = document.querySelector('.products');
+    const productsContainer = document.getElementById('products');
     productsContainer.innerHTML = '';
 
     filteredProducts.forEach(product => {
@@ -218,69 +218,107 @@ function displayProducts(filteredProducts = products) {
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>
                 <p class="price">${product.price} TL</p>
-                <button class="add-to-cart" data-product-id="${product.id}">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Sepete Ekle</span>
-                </button>
+                <button onclick="addToCart(${product.id})">Sepete Ekle</button>
             </div>
         `;
         productsContainer.appendChild(productElement);
     });
 }
 
-// Filter button click handler with animation
-const filterButtons = document.querySelectorAll('.filter-btn');
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        
-        // Update active state with animation
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        // Filter products with fade effect
-        const products = document.querySelectorAll('.product');
-        products.forEach(product => {
-            product.style.opacity = '0';
-            product.style.transform = 'translateY(20px)';
+// Filtreleme fonksiyonu
+function setupEventListeners() {
+    // Filtreleme butonları
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const category = button.getAttribute('data-category');
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            displayProducts(filteredProducts);
         });
-        
-        setTimeout(() => {
-            displayProducts(category);
-            setTimeout(() => {
-                const newProducts = document.querySelectorAll('.product');
-                newProducts.forEach(product => {
-                    product.style.opacity = '1';
-                    product.style.transform = 'translateY(0)';
-                });
-            }, 50);
-        }, 300);
     });
-});
+
+    // Arama fonksiyonu
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    searchBtn.addEventListener('click', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(searchTerm) || 
+            product.description.toLowerCase().includes(searchTerm)
+        );
+        displayProducts(filteredProducts);
+    });
+
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            searchBtn.click();
+        }
+    });
+}
+
+// Sepet işlemleri
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total-price');
+
+    // Sepet sayısını güncelle
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+
+    // Sepet içeriğini güncelle
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <span>${item.name}</span>
+            <span>${item.quantity} adet</span>
+            <span>${item.price * item.quantity} TL</span>
+        </div>
+    `).join('');
+
+    // Toplam tutarı güncelle
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    cartTotal.textContent = `${total} TL`;
+}
 
 // Sepet modalı
-const cartIcon = document.querySelector('.cart-icon');
+function openCart() {
+    const modal = document.getElementById('cart-modal');
+    modal.style.display = 'block';
+}
 
-cartIcon.addEventListener('click', () => {
-    cartModal.classList.add('active');
+document.querySelector('.close-cart').addEventListener('click', () => {
+    const modal = document.getElementById('cart-modal');
+    modal.style.display = 'none';
 });
 
-document.addEventListener('click', (e) => {
-    if (e.target === cartModal) {
-        cartModal.classList.remove('active');
-    }
-});
+// Bildirim gösterme
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
 
-// Initialize page
+    setTimeout(() => {
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 2000);
+    }, 100);
+}
+
+// Sayfa yüklendiğinde çalışacak fonksiyonlar
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize cart and theme
-    cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const savedTheme = localStorage.getItem('darkTheme');
-    setTheme(savedTheme === 'true');
-    
-    // Initialize display
-    updateCart();
     displayProducts();
+    setupEventListeners();
 });
 
 // Mobile Menu Toggle
@@ -375,5 +413,18 @@ searchBtn.addEventListener('click', searchProducts);
 searchInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
         searchProducts();
+    }
+});
+
+// Sepet modalı
+const cartIcon = document.querySelector('.cart-icon');
+
+cartIcon.addEventListener('click', () => {
+    cartModal.classList.add('active');
+});
+
+document.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        cartModal.classList.remove('active');
     }
 });
